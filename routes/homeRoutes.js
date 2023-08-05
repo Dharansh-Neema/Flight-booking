@@ -1,5 +1,5 @@
 const express = require("express");
-const { fareCalculator } = require("../controllers/fareCal");
+const { flightDetails } = require("../controllers/fareCal");
 const router = express.Router();
-router.route("/price").post(fareCalculator);
+router.route("/price").post(flightDetails);
 module.exports = router;
