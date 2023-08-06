@@ -6,7 +6,7 @@ async function getCoordinate(source, destination) {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "eea77d6b3dmsh2d5cf948f4eb614p1a0564jsn64741ffa75ab",
+        "X-RapidAPI-Key": process.env.RAPIDAPIKEY,
         "X-RapidAPI-Host": "geocoding-by-api-ninjas.p.rapidapi.com",
       },
     };
@@ -46,7 +46,7 @@ async function distanceCal(geocordinate) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "eea77d6b3dmsh2d5cf948f4eb614p1a0564jsn64741ffa75ab",
+      "X-RapidAPI-Key": process.env.RAPIDAPIKEY,
       "X-RapidAPI-Host": "distance-calculator8.p.rapidapi.com",
     },
   };
@@ -90,10 +90,23 @@ async function fareCalcultor(geocordinate, distance) {
 exports.flightDetails = async (req, res, next) => {
   try {
     const { source, destination, date } = req.body;
+    if (!source || !destination || !date) {
+      throw new Error("Source, destinattion and date is required");
+    }
     //getting the co-ordinates of source and destination
     const geocordinate = await getCoordinate(source, destination);
     // console.log("GeoCordinates\n", geocordinate);
+    //Handling errors
+    if (!geocordinate.source.longitude || !geocordinate.source.latitude)
+      throw new Error("Source location invalid ");
+    if (
+      !geocordinate.destination.longitude ||
+      !geocordinate.destination.latitude
+    )
+      throw new Error("Destination location invalid ");
+
     const distance = await distanceCal(geocordinate);
+
     const fareDetails = await fareCalcultor(geocordinate, distance);
     res.status(200).json({ sucess: true, geocordinate, distance, fareDetails });
   } catch (error) {

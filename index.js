@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 const bodyParser = require("body-parser");
-
+require("dotenv").config();
 //Regulare middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
