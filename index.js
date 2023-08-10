@@ -1,13 +1,14 @@
 const express = require("express");
 //Declaring app
 const app = express();
-
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 //Regulare middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 const dbconfig = require("./config/dbconfig");
 dbconfig();
 //Importing routes

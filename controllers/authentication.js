@@ -8,7 +8,6 @@ exports.signup = async (req, res) => {
     let { name, password, email } = req.body;
     if (!name || !password || !email)
       throw new Error("Name, Password , email is required");
-    // password = await bcrypt.hash(password, 10);
     const response = await user.create({ name, email, password });
     cookieToken(res, response);
   } catch (error) {
