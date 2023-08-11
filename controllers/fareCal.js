@@ -2,7 +2,6 @@ const getCoordinate = require("../utils/geoCoordinates");
 const distanceCal = require("../utils/distanceSD");
 const farecalculator = require("../utils/farecalculator");
 const airportLocator = require("../utils/airportLocator");
-const airline = require("../models/airlines");
 
 exports.flightDetails = async (req, res, next) => {
   try {
