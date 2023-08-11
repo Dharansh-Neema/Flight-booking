@@ -6,7 +6,7 @@ async function getCoordinate(source, destination) {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "eea77d6b3dmsh2d5cf948f4eb614p1a0564jsn64741ffa75ab",
+        "X-RapidAPI-Key": process.env.RAPIDAPIKEY,
         "X-RapidAPI-Host": "geocoding-by-api-ninjas.p.rapidapi.com",
       },
     };
