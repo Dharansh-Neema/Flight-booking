@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 const connectWithDB = () => {
   mongoose.set("strictQuery", false);
   mongoose
-    .connect(process.env.DB_URL)
+    .connect(
+      "mongodb+srv://myAtlasDBUser:63bT8WMp7H*NN*G@myatlasclusteredu.sjfbbar.mongodb.net/?retryWrites=true&w=majority"
+    )
     .then(console.log("DB Connected Succesfully"))
     .catch((err) => {
       console.error("DB connection issue");

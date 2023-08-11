@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const user = require("../models/user");
+const SecretKey = "thisismysecretkeyforflightbookingapi";
+
 async function isLoggedIn(req, res, next) {
   try {
     console.log(req.cookies);
@@ -9,7 +11,7 @@ async function isLoggedIn(req, res, next) {
       req.header("Authorization").replace("Bearer ", "");
     // console.log(token);
     if (!token) throw new Error("Please Login First");
-    const decode = jwt.verify(token, process.env.SecretKey);
+    const decode = jwt.verify(token, SecretKey);
     req.user = await user.findById(decode.id);
     next();
   } catch (error) {

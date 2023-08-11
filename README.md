@@ -101,4 +101,4 @@ Admin can **update cost** based on the change required.
 
 ### 5. Admin displaying all the users
 
-![all-users-info]();
+![all-users-info](https://github.com/Dharansh-Neema/Flight-booking/blob/main/images/Al%20users.png);

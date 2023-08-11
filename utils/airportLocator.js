@@ -6,7 +6,9 @@ async function airportLocator(source, destination) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": process.env.RAPIDAPIKEY,
+      "X-RapidAPI-Key":
+        "eea77d6b3dmsh2d5cf948f4eb614p1a0564jsn64741ffa75ab" ||
+        process.env.RAPIDAPIKEY,
       "X-RapidAPI-Host": "airports-by-api-ninjas.p.rapidapi.com",
     },
   };
