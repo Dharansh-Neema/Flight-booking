@@ -14,11 +14,13 @@ dbconfig();
 //Importing routes
 const Homeroutes = require("./routes/homeRoutes");
 const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adimRoutes");
 app.get("/", (req, res) => {
   res.send("Welcome to Flight Booking System");
 });
 app.use("/", Homeroutes);
-app.use("/api/", userRoutes);
+app.use("/user/", userRoutes);
+app.use("/admin/", adminRoutes);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

@@ -1,7 +1,8 @@
 const getCoordinate = require("../utils/geoCoordinates");
 const distanceCal = require("../utils/distanceSD");
-const fareCal = require("../utils/farecalculator");
+const farecalculator = require("../utils/farecalculator");
 const airportLocator = require("../utils/airportLocator");
+const airline = require("../models/airlines");
 
 exports.flightDetails = async (req, res, next) => {
   try {
@@ -33,7 +34,7 @@ exports.flightDetails = async (req, res, next) => {
       throw new Error("No airport exist at requested destination");
     const distance = await distanceCal(geocordinate);
     const { name, email } = req.user;
-    const fareDetails = await fareCal(date, distance);
+    const fareDetails = await farecalculator(date, distance.kilometers);
     res.status(200).json({
       bookingBy: name,
       email,
